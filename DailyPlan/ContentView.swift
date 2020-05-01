@@ -10,12 +10,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        ClickView()
+        .frame(width: 250, height: 250)
+        .background(Color("bgColor"))
+        .cornerRadius(125)
+        .gesture(
+            TapGesture().onEnded({
+                print("click into another page")
+            })
+            
+        )
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct ClickView: View {
+    var body: some View {
+        Text("选取今日数字")
+            .foregroundColor(.white)
+            .font(.largeTitle)
     }
 }
