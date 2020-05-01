@@ -1,3 +1,9 @@
-/xcshareddata/
-/xcuserdata/
+### OSX ###
 .DS_Store
+
+
+xcshareddata
+xcuserdata
+
+*.xcuserdatad
+*.xcuserstate
