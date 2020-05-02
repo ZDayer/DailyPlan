@@ -10,22 +10,28 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ClickView()
-        .frame(width: 250, height: 250)
-        .background(Color("bgColor"))
-        .cornerRadius(125)
-        .gesture(
-            TapGesture().onEnded({
-                print("click into another page")
-            })
-            
-        )
+        
+        NavigationView {
+            NavigationLink(destination: DailyDetail()) {
+                VStack {
+                    ClickView()
+                        .frame(width: 250, height: 250)
+                        .background(Color("bgColor"))
+                        .cornerRadius(125)
+                }
+            }
+        }
+        
+        
+        
+
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        
     }
 }
 

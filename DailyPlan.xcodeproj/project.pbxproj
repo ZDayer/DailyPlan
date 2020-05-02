@@ -13,6 +13,7 @@
 		0C1CFE2F245AC315005F2C86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CFE2E245AC315005F2C86 /* Assets.xcassets */; };
 		0C1CFE32245AC315005F2C86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CFE31245AC315005F2C86 /* Preview Assets.xcassets */; };
 		0C1CFE35245AC315005F2C86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CFE33245AC315005F2C86 /* LaunchScreen.storyboard */; };
+		0C9F06DE245D0D8D002AC1B6 /* DailyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F06DD245D0D8D002AC1B6 /* DailyDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0C1CFE31245AC315005F2C86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C1CFE34245AC315005F2C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C1CFE36245AC315005F2C86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C9F06DD245D0D8D002AC1B6 /* DailyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				0C1CFE28245AC312005F2C86 /* AppDelegate.swift */,
 				0C1CFE2A245AC312005F2C86 /* SceneDelegate.swift */,
 				0C1CFE2C245AC312005F2C86 /* ContentView.swift */,
+				0C9F06DD245D0D8D002AC1B6 /* DailyDetail.swift */,
 				0C1CFE2E245AC315005F2C86 /* Assets.xcassets */,
 				0C1CFE33245AC315005F2C86 /* LaunchScreen.storyboard */,
 				0C1CFE36245AC315005F2C86 /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				0C1CFE29245AC312005F2C86 /* AppDelegate.swift in Sources */,
 				0C1CFE2B245AC312005F2C86 /* SceneDelegate.swift in Sources */,
+				0C9F06DE245D0D8D002AC1B6 /* DailyDetail.swift in Sources */,
 				0C1CFE2D245AC312005F2C86 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
