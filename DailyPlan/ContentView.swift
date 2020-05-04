@@ -10,14 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        
          ClickView()
             .frame(width: 250, height: 250)
             .background(Color("bgColor"))
             .cornerRadius(125)
             .onTapGesture {
                 let random = randomDailyNumber()
-                print(random)
+                print(random, type(of: String(random)))
         }
         
 //        NavigationView {
