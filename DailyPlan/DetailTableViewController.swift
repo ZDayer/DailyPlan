@@ -40,7 +40,23 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! DetailTableViewCell
+        let key = cacheData?.allKeys[indexPath.row]
+        let value = cacheData?[key!]
+//        print("value = \(value as Any)")
+        
+//        print("value1 = \(value as? String ?? "value-----")")
+//
+//        print("value2 = \(String(describing: value as? String))")
+
+        guard let str = value as? String else {
+            print("empty str")
+            return DetailTableViewCell()
+        }
+        print("value = \(str)")
+        
+        cell.titleStr = value as? String
+        cell.subTitleStr = key as? String
         return cell
     }
     
@@ -51,6 +67,22 @@ class DetailTableViewController: UITableViewController {
 
 
 class DetailTableViewCell: UITableViewCell {
+    var titleLbl : UILabel!
+    var subTitleLbl : UILabel!
+    var titleStr : String? {
+        willSet {
+//            print("newValue = \(newValue as Any)")
+            titleLbl.text = newValue
+        }
+    }
+    var subTitleStr : String? {
+        willSet {
+//            print("newValues = \(newValue as Any)")
+            subTitleLbl.text = newValue
+        }
+    }
+    
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -58,28 +90,27 @@ class DetailTableViewCell: UITableViewCell {
     }
     
     func initSubviews() {
-        let titleLbl = UILabel()
+        titleLbl = UILabel()
         self.contentView.addSubview(titleLbl)
         titleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(15)
             make.top.bottom.equalToSuperview()
         }
         titleLbl.font = UIFont.boldSystemFont(ofSize: 20)
-        titleLbl.text = "title label"
+//        titleLbl.text = titleStr
         
-        let subTitleLbl = UILabel()
+        subTitleLbl = UILabel()
         self.contentView.addSubview(subTitleLbl)
         subTitleLbl.snp.makeConstraints { (make) in
             make.trailing.equalTo(-15)
             make.top.bottom.equalToSuperview()
         }
         subTitleLbl.font = UIFont.systemFont(ofSize: 18)
-        subTitleLbl.text = "sub title label"
+//        subTitleLbl.text = subTitleStr
         subTitleLbl.textColor = UIColor.lightGray
-        
-        
     }
-
+    
+  
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
