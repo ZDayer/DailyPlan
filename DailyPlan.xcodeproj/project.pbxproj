@@ -351,7 +351,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zdayer.zdayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bankcomm.maidanba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = mandanba_PF;
 				SWIFT_VERSION = 5.0;
@@ -376,7 +376,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zdayer.zdayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bankcomm.maidanba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = mandanba_PF;
 				SWIFT_VERSION = 5.0;
