@@ -12,6 +12,7 @@ class DetailTableViewController: UITableViewController {
     var cacheData : NSDictionary?
     let cacheFilePath = "dailyData"
     var keys : [Any]!
+    var totalNumber : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,9 @@ class DetailTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.customNaviBar()
         self.tableView.register(DetailTableViewCell.classForCoder(), forCellReuseIdentifier: "reuseIdentifier")
+        
         
         guard let tempCacheData = NSDictionary(contentsOfFile: self.cachePath()) else {
             return
@@ -35,15 +38,17 @@ class DetailTableViewController: UITableViewController {
         })
         
         let values = (cacheData?.allValues)!
-        var total : NSNumber = 0
+        var total = 0
         for item in values {
- 
+            let num = (item as! NSNumber).intValue
+            total += num
         }
-        
-        print(total)
-        
-        
-        
+        totalNumber = String(total)
+    }
+    
+    func customNaviBar() {
+//        self.navigationItem.leftBarButtonItem =
+        self.navigationItem.title = "Detail"
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -56,13 +61,14 @@ class DetailTableViewController: UITableViewController {
     
     func customHeaderView() -> UIView {
         let view = UIView()
+        view.backgroundColor = UIColor(named: "headColor")
         let totalNumberLbl = UILabel()
         view.addSubview(totalNumberLbl)
         totalNumberLbl.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.equalTo(15)
         }
-        totalNumberLbl.text = "dakf"
+        totalNumberLbl.text = totalNumber
         
         let totalDayLbl = UILabel()
         view.addSubview(totalDayLbl)
@@ -117,6 +123,7 @@ class DetailTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         self.initSubviews()
     }
     
