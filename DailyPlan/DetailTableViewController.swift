@@ -47,8 +47,8 @@ class DetailTableViewController: UITableViewController {
     }
     
     func customNaviBar() {
-//        self.navigationItem.leftBarButtonItem =
         self.navigationItem.title = "Detail"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nibName, action: nil)
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
