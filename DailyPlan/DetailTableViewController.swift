@@ -47,10 +47,16 @@ class DetailTableViewController: UITableViewController {
     }
     
     func customNaviBar() {
+        let image = UIImage(systemName: "chevron.left")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backMethod))
         self.navigationItem.title = "Detail"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nibName, action: nil)
     }
 
+    @objc func backMethod() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
