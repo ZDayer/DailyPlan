@@ -26,9 +26,13 @@ class DetailTableViewController: UITableViewController {
         self.tableView.register(DetailTableViewCell.classForCoder(), forCellReuseIdentifier: "reuseIdentifier")
         
         
-        guard let tempCacheData = NSDictionary(contentsOfFile: self.cachePath()) else {
+        guard let tempCacheData = NSDictionary(contentsOfFile: DailyNumber.cachePath()) else {
             return
         }
+        self.updateData(tempCacheData: tempCacheData)
+    }
+    
+    func updateData(tempCacheData : NSDictionary)  {
         cacheData = tempCacheData
         keys = cacheData?.allKeys
         keys?.sort(by: { (key1, key2) -> Bool in
@@ -47,15 +51,49 @@ class DetailTableViewController: UITableViewController {
     }
     
     func customNaviBar() {
-        let image = UIImage(systemName: "chevron.left")
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backMethod))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .done, target: self, action: #selector(backMethod))
         self.navigationItem.title = "Detail"
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nibName, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(insertDailyData))
     }
 
     @objc func backMethod() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc func insertDailyData() {
+        let alert = UIAlertController(title: "", message: "请输入日期", preferredStyle: .alert)
+        alert.addTextField { textInput in
+            textInput.placeholder = "请输入日期"
+            textInput.textColor = UIColor.black
+            textInput.keyboardType = .numberPad
+        }
+        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { action in
+            self.reloadDailyNumber(inputDate: alert.textFields?.last?.text)
+        }))
+            
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    func reloadDailyNumber(inputDate : String?) {
+        guard let inputDateStr = inputDate else {
+            return
+        }
+        let randomNumber = DailyNumber.insertDailyRandomNumber(date: inputDateStr)
+        if randomNumber == 0 {
+            let alert = UIAlertController(title: "", message: "请输入正确的日期", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        cacheData?.setValue(randomNumber, forKey: inputDateStr)
+        self.updateData(tempCacheData: cacheData!)
+        cacheData!.write(toFile: DailyNumber.cachePath(), atomically: true)
+        self.tableView.reloadData()
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
@@ -105,9 +143,6 @@ class DetailTableViewController: UITableViewController {
         return cell
     }
     
-    func cachePath() -> String {
-        return (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? NSHomeDirectory()).appending("/"+cacheFilePath)
-    }
 }
 
 
@@ -141,7 +176,6 @@ class DetailTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview()
         }
         titleLbl.font = UIFont.boldSystemFont(ofSize: 20)
-//        titleLbl.text = titleStr
         
         subTitleLbl = UILabel()
         self.contentView.addSubview(subTitleLbl)
@@ -150,7 +184,6 @@ class DetailTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview()
         }
         subTitleLbl.font = UIFont.systemFont(ofSize: 18)
-//        subTitleLbl.text = subTitleStr
         subTitleLbl.textColor = UIColor.lightGray
     }
     

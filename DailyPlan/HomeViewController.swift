@@ -47,41 +47,11 @@ class HomeViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
-    
-    func dailyRandomNumber(allValues : NSArray) -> Int {
 
-        var tempRandomNumber = 0
-        var exist = false
-        repeat {
-            tempRandomNumber = Int(arc4random()%365+1)
-            if allValues.count != 0 {
-                exist = allValues.contains(tempRandomNumber)
-            }
-        } while exist
-        return tempRandomNumber
-    }
-    
-    func fetchCache() -> NSDictionary {
-        guard let dict = NSDictionary(contentsOfFile: self.cachePath()) else {
-            return [:] as NSDictionary
-        }
-        return dict
-    }
-    
-    
-    func cachePath() -> String {
-        return (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? NSHomeDirectory()).appending("/"+cacheFilePath)
-    }
-    
-    func getDateFormatString() -> String {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyyMMdd"
-        return dateformatter.string(from: Date())
-    }
     
     func checkTodayCache() {
-        let dic = self.fetchCache()
-        let today = self.getDateFormatString()
+        let dic = DailyNumber.fetchCache()
+        let today = DailyNumber.getDateFormatString()
         let allkeys:NSArray = dic.allKeys as NSArray
         let exist = allkeys.contains(today)
         if exist {
@@ -96,12 +66,12 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(detailTVC, animated: true)
             return
         }
-        let dic = self.fetchCache()
-        let today = self.getDateFormatString()
-        self.randomNumber = self.dailyRandomNumber(allValues: dic.allValues as NSArray)
+        let dic = DailyNumber.fetchCache()
+        let today = DailyNumber.getDateFormatString()
+        self.randomNumber = DailyNumber.dailyRandomNumber()
         let tempDic = NSMutableDictionary(dictionary: dic)
         tempDic.setValue(self.randomNumber, forKey: today)
-        tempDic.write(toFile: self.cachePath(), atomically: true)
+        tempDic.write(toFile: DailyNumber.cachePath(), atomically: true)
         self.randomNumberExist = true
         self.updateView()
     }
