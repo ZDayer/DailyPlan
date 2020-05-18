@@ -16,6 +16,7 @@
 		0C0A433C246918CC00E4D21F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0A433B246918CC00E4D21F /* SnapKit.framework */; };
 		0C0A433D246918CC00E4D21F /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0A433B246918CC00E4D21F /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0C2FF957246A6BD30009CDCF /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2FF956246A6BD30009CDCF /* DetailTableViewController.swift */; };
+		0C65F940247267870041DB62 /* DailyNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C65F93F247267870041DB62 /* DailyNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		0C0A43382468F37000E4D21F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0C0A433B246918CC00E4D21F /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		0C2FF956246A6BD30009CDCF /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		0C65F93F247267870041DB62 /* DailyNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNumber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				0C0A43262468E97900E4D21F /* SceneDelegate.swift */,
 				0C0A43382468F37000E4D21F /* HomeViewController.swift */,
 				0C2FF956246A6BD30009CDCF /* DetailTableViewController.swift */,
+				0C65F93F247267870041DB62 /* DailyNumber.swift */,
 				0C0A432A2468E97900E4D21F /* Main.storyboard */,
 				0C0A432D2468E9A000E4D21F /* Assets.xcassets */,
 				0C0A432F2468E9A100E4D21F /* LaunchScreen.storyboard */,
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C2FF957246A6BD30009CDCF /* DetailTableViewController.swift in Sources */,
+				0C65F940247267870041DB62 /* DailyNumber.swift in Sources */,
 				0C0A43252468E97900E4D21F /* AppDelegate.swift in Sources */,
 				0C0A43272468E97900E4D21F /* SceneDelegate.swift in Sources */,
 				0C0A43392468F37000E4D21F /* HomeViewController.swift in Sources */,
