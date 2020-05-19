@@ -44,6 +44,14 @@ class DailyNumber: NSObject {
         return 0
     }
     
+    class func autoDailyRandomNumber() -> String {
+        let number = DailyNumber.insertDailyRandomNumber(date: DailyNumber.getDateFormatString())
+        let tempDic = NSMutableDictionary(dictionary: DailyNumber.fetchCache())
+        tempDic.setValue(number, forKey: DailyNumber.getDateFormatString())
+        tempDic.write(toFile: DailyNumber.cachePath(), atomically: true)
+        return String(number)
+    }
+    
     
     class func fetchCache() -> NSDictionary {
         guard let dict = NSDictionary(contentsOfFile: self.cachePath()) else {
