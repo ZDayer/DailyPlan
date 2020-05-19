@@ -32,7 +32,7 @@ class LocalNotification: NSObject {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dailyDate = formatter.date(from: "2020-05-19 07:00:00")!
-        let components = Calendar.current.dateComponents([.hour, .minute, .second], from: dailyDate)
+        let components = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: dailyDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
         // 请求标识符
         let requestIdentifier = "com.zdayer.ZdayerDaily.localNotification"
