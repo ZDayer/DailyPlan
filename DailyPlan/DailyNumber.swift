@@ -36,7 +36,7 @@ class DailyNumber: NSObject {
         if inputDate<=today {
             let allKeys = self.fetchCache().allKeys as NSArray
             if allKeys.contains(inputDate) {
-                return 0
+                return self.fetchCache()[inputDate] as! Int
             }
             return self.dailyRandomNumber()
         }
