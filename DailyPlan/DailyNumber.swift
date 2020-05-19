@@ -33,7 +33,6 @@ class DailyNumber: NSObject {
         }
         let today = self.getDateFormatString()
         
-        print(inputDate<=today)
         if inputDate<=today {
             let allKeys = self.fetchCache().allKeys as NSArray
             if allKeys.contains(inputDate) {
