@@ -83,4 +83,8 @@ class HomeViewController: UIViewController {
         self.clickView.backgroundColor = UIColor(named: "disColor")
     }
     
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        LocalNotification.localNotification(message: "842")
+    }
 }

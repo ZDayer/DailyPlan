@@ -5,7 +5,7 @@
 //  Created by zhaoyang on 2020/5/11.
 //  Copyright © 2020 zhaoyang. All rights reserved.
 //
-
+// com.zdayer.ZdayerDaily
 import UIKit
 
 @UIApplicationMain
@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        application.applicationIconBadgeNumber = 0
+        LocalNotification.notificationRegister()
         return true
     }
 
