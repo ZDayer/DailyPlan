@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class LocalNotification: NSObject {
 
@@ -19,21 +20,21 @@ class LocalNotification: NSObject {
         
     }
     
-    class func localNotification(message : String) {
+    class func localNotification() {
         // 通知内容
         let content = UNMutableNotificationContent()
         let date = DailyNumber.getDateFormatString()
+        let number = DailyNumber.insertDailyRandomNumber(date: DailyNumber.getDateFormatString())
+        let message = String(number)
         content.title = "Daily Notification"
         content.body = "Daily Random Number (\(date)): ".appending(message)
         content.badge = 1
         
         // 发送触发
         // 每天 7点 推送
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dailyDate = formatter.date(from: "2020-05-19 07:00:00")!
-        let components = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: dailyDate)
+        let components = DateComponents(hour: 7)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        
         // 请求标识符
         let requestIdentifier = "com.zdayer.ZdayerDaily.localNotification"
         
@@ -44,9 +45,11 @@ class LocalNotification: NSObject {
         UNUserNotificationCenter.current().add(request) { error in
             if error == nil {
                 print("Daily Notification scheduled: \(requestIdentifier)")
+                let tempDic = NSMutableDictionary(dictionary: DailyNumber.fetchCache())
+                tempDic.setValue(number, forKey: DailyNumber.getDateFormatString())
+                tempDic.write(toFile: DailyNumber.cachePath(), atomically: true)
             }
         }
-
     }
     
     

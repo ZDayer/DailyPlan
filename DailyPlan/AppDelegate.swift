@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         application.applicationIconBadgeNumber = 0
         LocalNotification.notificationRegister()
-        let randomNumber = DailyNumber.autoDailyRandomNumber()
-        LocalNotification.localNotification(message: randomNumber)
+//        LocalNotification.localNotification(message: randomNumber)
+        LocalNotification.localNotification()
         return true
     }
 

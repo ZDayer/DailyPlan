@@ -85,6 +85,6 @@ class HomeViewController: UIViewController {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        LocalNotification.localNotification(message: "842")
+        LocalNotification.localNotification()
     }
 }
